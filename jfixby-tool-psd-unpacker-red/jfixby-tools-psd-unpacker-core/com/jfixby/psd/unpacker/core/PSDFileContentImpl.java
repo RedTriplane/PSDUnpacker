@@ -3,10 +3,10 @@ package com.jfixby.psd.unpacker.core;
 import java.awt.image.BufferedImage;
 
 import com.jfixby.cmns.api.collections.Collection;
-import com.jfixby.cmns.api.collections.JUtils;
 import com.jfixby.cmns.api.collections.List;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.path.AbsolutePath;
+import com.jfixby.cmns.api.util.JUtils;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDLayer;
 import com.jfixby.psd.unpacker.api.PSDRootLayer;
