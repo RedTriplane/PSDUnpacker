@@ -10,6 +10,7 @@ import com.jfixby.cmns.api.filesystem.File;
 import com.jfixby.cmns.api.filesystem.FileOutputStream;
 import com.jfixby.cmns.api.filesystem.LocalFileSystem;
 import com.jfixby.cmns.api.log.L;
+import com.jfixby.cmns.desktop.DesktopAssembler;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDLayer;
 import com.jfixby.psd.unpacker.api.PSDRaster;
@@ -21,7 +22,7 @@ public class UnpackExamplePSD {
 
 	public static void main(String[] args) throws IOException {
 
-		Setup.setup();
+		DesktopAssembler.setup();
 		File home = LocalFileSystem.ApplicationHome();
 
 		File examples_folder = home.child("unpacker-input");

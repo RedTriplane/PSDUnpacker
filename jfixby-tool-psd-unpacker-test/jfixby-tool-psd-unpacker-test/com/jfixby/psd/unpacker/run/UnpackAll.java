@@ -13,6 +13,7 @@ import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.path.ChildrenList;
 import com.jfixby.cmns.api.path.FileFilter;
 import com.jfixby.cmns.api.sys.Sys;
+import com.jfixby.cmns.desktop.DesktopAssembler;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDLayer;
 import com.jfixby.psd.unpacker.api.PSDRaster;
@@ -32,7 +33,7 @@ public class UnpackAll {
 
 	public static void main(String[] args) throws IOException {
 
-		Setup.setup();
+		DesktopAssembler.setup();
 		File home = LocalFileSystem.ApplicationHome();
 
 		File input_folder = home.child("unpacker-input");

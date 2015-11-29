@@ -2,8 +2,11 @@ package com.jfixby.psd.unpacker.core.legacy;
 
 import java.awt.image.BufferedImage;
 
+import com.jfixby.cmns.api.floatn.Float2;
+import com.jfixby.cmns.api.geometry.Geometry;
+
 public class RasterLayer extends Layer {
-	final Offset offset = new Offset();
+	final Float2 offset = Geometry.newFloat2();
 	BufferedImage raster;
 
 	public BufferedImage getRaster() {
@@ -14,7 +17,7 @@ public class RasterLayer extends Layer {
 		this.raster = raster;
 	}
 
-	public Offset getOffset() {
+	public Float2 getOffset() {
 		return offset;
 	}
 
