@@ -2,7 +2,7 @@ package com.jfixby.psd.unpacker.core;
 
 import java.awt.image.BufferedImage;
 
-import com.jfixby.cmns.api.collections.JUtils;
+import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
 import com.jfixby.cmns.api.collections.Map;
 import com.jfixby.cmns.api.log.L;
@@ -35,8 +35,8 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 		my_path = root_path;
 		if (element.isLayerGroup()) {
 			master.reportGroup(this);
-			children_list = JUtils.newList();
-			children_map = JUtils.newMap();
+			children_list = Collections.newList();
+			children_map = Collections.newMap();
 			LayerGroup group = (LayerGroup) element;
 			for (int i = 0; i < group.getSublayers().size(); i++) {
 				Layer child = group.getSublayers().get(i);
