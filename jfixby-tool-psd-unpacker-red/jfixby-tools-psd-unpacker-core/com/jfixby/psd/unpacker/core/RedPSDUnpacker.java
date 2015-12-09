@@ -3,7 +3,7 @@ package com.jfixby.psd.unpacker.core;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import com.jfixby.cmns.api.filesystem.File;
+import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDUnpackerComponent;

@@ -6,9 +6,9 @@ import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
-import com.jfixby.cmns.api.filesystem.File;
-import com.jfixby.cmns.api.filesystem.FileOutputStream;
-import com.jfixby.cmns.api.filesystem.LocalFileSystem;
+import com.jfixby.cmns.api.file.File;
+import com.jfixby.cmns.api.file.FileOutputStream;
+import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.desktop.DesktopAssembler;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
