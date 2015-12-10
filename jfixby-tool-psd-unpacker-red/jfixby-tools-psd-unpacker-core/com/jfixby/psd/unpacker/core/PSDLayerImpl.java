@@ -6,7 +6,7 @@ import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
 import com.jfixby.cmns.api.collections.Map;
 import com.jfixby.cmns.api.log.L;
-import com.jfixby.cmns.api.path.AbsolutePath;
+import com.jfixby.cmns.api.util.path.AbsolutePath;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDLayer;
 import com.jfixby.psd.unpacker.api.PSDRaster;

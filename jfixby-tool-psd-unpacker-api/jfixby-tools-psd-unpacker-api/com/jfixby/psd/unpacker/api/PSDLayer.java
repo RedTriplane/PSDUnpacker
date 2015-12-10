@@ -1,6 +1,6 @@
 package com.jfixby.psd.unpacker.api;
 
-import com.jfixby.cmns.api.path.AbsolutePath;
+import com.jfixby.cmns.api.util.path.AbsolutePath;
 
 public interface PSDLayer {
 
