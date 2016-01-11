@@ -1,17 +1,21 @@
 package com.jfixby.psd.unpacker.core.legacy;
 
-
 public class LayerInfo {
 	int x, y, w, h;
 	boolean visible;
+	private int index;
+
+	public LayerInfo(int i) {
+		this.index = i;
+	}
 
 	@Override
 	public String toString() {
-		return "LayerInfo [name=" + name + ", w=" + w + ", h=" + h
-				+ ", visible=" + visible + ", x=" + x + ", y=" + y
-				+ ", channels=" + channels + ", layerTransparency="
-				+ layerTransparency + "]";
+		return "LayerInfo [name=" + name + ", x=" + x + ", y=" + y + ", w=" + w + ", h=" + h + ", visible=" + visible + ", index=" + index + ", channels=" + channels + ", layerTransparency=" + layerTransparency + ", mask_data=" + mask_data
+			+ ", blending_ranges_data=" + blending_ranges_data + "]";
 	}
+
+
 
 	final Channels channels = new Channels();
 
@@ -92,7 +96,7 @@ public class LayerInfo {
 	public MaskData getMaskData() {
 		return mask_data;
 	}
-	
+
 	public BlendingRanges getBlendingRanges() {
 		return blending_ranges_data;
 	}
