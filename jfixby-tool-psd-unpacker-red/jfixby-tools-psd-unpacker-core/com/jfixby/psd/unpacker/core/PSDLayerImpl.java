@@ -59,6 +59,7 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 
 			this.raster = new PSDRasterImpl(buffered_image, raster.getOffset()
 					.getX(), raster.getOffset().getY());
+			
 
 			children_list = null;
 			children_map = null;

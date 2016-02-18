@@ -28,8 +28,7 @@ public class PSDFileContentImpl implements PSDFileContent {
 		return result.getFileName();
 	}
 
-	public PSDFileContentImpl(
-			com.jfixby.psd.unpacker.core.legacy.FileContent result) {
+	public PSDFileContentImpl(com.jfixby.psd.unpacker.core.legacy.FileContent result) {
 		this.result = result;
 		root_path = JUtils.newAbsolutePath(this);
 		root = new PSDLayerImpl(this, this.result.getRootLayer(), root_path);
@@ -58,8 +57,7 @@ public class PSDFileContentImpl implements PSDFileContent {
 			LayerGroup group = (LayerGroup) layer;
 			boolean is_visible = group.isVisible();
 
-			L.d(prefix(indent) + "group",
-					isHidden(is_visible) + group.getName());
+			L.d(prefix(indent) + "group", isHidden(is_visible) + group.getName());
 			for (int i = 0; i < group.getSublayers().size(); i++) {
 				Layer sub_layer = group.getSublayers().get(i);
 				print(indent + 1, sub_layer);
@@ -67,10 +65,8 @@ public class PSDFileContentImpl implements PSDFileContent {
 		} else {
 			RasterLayer raster = (RasterLayer) layer;
 			boolean is_visible = raster.isVisible();
-			L.d(prefix(indent) + "raster",
-					isHidden(is_visible) + "[" + raster.getName() + "]" + " "
-							+ raster.getOffset() + " "
-							+ print(raster.getRaster()));
+			L.d(prefix(indent) + "raster", isHidden(is_visible) + "[" + raster.getName() + "]" + " "
+					+ raster.getOffset() + " " + print(raster.getRaster()));
 		}
 
 	}
@@ -119,6 +115,7 @@ public class PSDFileContentImpl implements PSDFileContent {
 	}
 
 	public void reportRaster(PSDLayerImpl psdLayerImpl) {
+//		L.d("reportRaster", psdLayerImpl);
 		rasters.add(psdLayerImpl);
 	}
 

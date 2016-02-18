@@ -570,7 +570,7 @@ public class PSDReader {
 			// }
 			info.setName(layer_name_string);
 			;
-			L.d("layer read ", info);
+//			L.d("layer read ", info);
 
 		}
 	}
