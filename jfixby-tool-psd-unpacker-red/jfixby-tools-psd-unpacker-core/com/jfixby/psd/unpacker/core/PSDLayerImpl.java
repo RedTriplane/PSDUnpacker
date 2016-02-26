@@ -11,8 +11,10 @@ import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDLayer;
 import com.jfixby.psd.unpacker.api.PSDRaster;
 import com.jfixby.psd.unpacker.api.PSDRootLayer;
+import com.jfixby.psd.unpacker.api.PSD_BLEND_MODE;
 import com.jfixby.psd.unpacker.core.legacy.Layer;
 import com.jfixby.psd.unpacker.core.legacy.LayerGroup;
+import com.jfixby.psd.unpacker.core.legacy.LayerInfo;
 import com.jfixby.psd.unpacker.core.legacy.RasterLayer;
 
 public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
@@ -25,12 +27,13 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 
 	private final PSDRaster raster;
 	private PSDFileContentImpl master;
+	private PSD_BLEND_MODE blend_mode = PSD_BLEND_MODE.UNKNOWN;
 
-	public PSDLayerImpl(PSDFileContentImpl master, Layer element,
-			AbsolutePath<PSDFileContent> root_path) {
+	public PSDLayerImpl(PSDFileContentImpl master, Layer element, AbsolutePath<PSDFileContent> root_path) {
 		this.master = master;
 		visible = element.isVisible();
 		name = element.getName();
+		blend_mode = modeOf(element.getBlendMode());
 
 		my_path = root_path;
 		if (element.isLayerGroup()) {
@@ -41,8 +44,7 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 			for (int i = 0; i < group.getSublayers().size(); i++) {
 				Layer child = group.getSublayers().get(i);
 
-				PSDLayerImpl layer = new PSDLayerImpl(master, child,
-						my_path.child(child.getName()));
+				PSDLayerImpl layer = new PSDLayerImpl(master, child, my_path.child(child.getName()));
 
 				// path_string
 				// + PSDPathImpl.SEPARATOR + child.getName());
@@ -57,14 +59,26 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 
 			BufferedImage buffered_image = raster.getRaster();
 
-			this.raster = new PSDRasterImpl(buffered_image, raster.getOffset()
-					.getX(), raster.getOffset().getY());
-			
+			this.raster = new PSDRasterImpl(buffered_image, raster.getOffset().getX(), raster.getOffset().getY());
 
 			children_list = null;
 			children_map = null;
 		}
 
+	}
+
+	public static final PSD_BLEND_MODE modeOf(int blend) {
+		 
+		if (blend == LayerInfo.BLEND_NORMAL) {
+			return PSD_BLEND_MODE.NORMAL;
+		}
+		if (blend == LayerInfo.BLEND_MULTIPLY) {
+			return PSD_BLEND_MODE.MULTIPLY;
+		}
+		if (blend == LayerInfo.BLEND_HUE) {
+			return PSD_BLEND_MODE.HUE;
+		}
+		return PSD_BLEND_MODE.UNKNOWN;
 	}
 
 	@Override
@@ -149,8 +163,7 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 
 	@Override
 	public String toString() {
-		return "PSDLayer[visible=" + visible + ", name=" + name + ", my_path="
-				+ my_path + "]";
+		return "PSDLayer[visible=" + visible + ", name=" + name + ", my_path=" + my_path + "]";
 	}
 
 	@Override
@@ -161,6 +174,11 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 	@Override
 	public void dropRaster() {
 		this.raster.drop();
+	}
+
+	@Override
+	public PSD_BLEND_MODE getMode() {
+		return blend_mode;
 	}
 
 }

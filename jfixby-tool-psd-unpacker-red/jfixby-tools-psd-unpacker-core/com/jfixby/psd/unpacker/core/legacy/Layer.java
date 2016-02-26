@@ -1,13 +1,16 @@
 package com.jfixby.psd.unpacker.core.legacy;
 
-
-public
-abstract class Layer {
+public abstract class Layer {
 	String name;
 	boolean visible = true;
+	private int blend_mode;
 
 	public String getName() {
 		return name;
+	}
+
+	public void setMode(int blendMode) {
+		this.blend_mode = blendMode;
 	}
 
 	public void setName(String name) {
@@ -23,4 +26,8 @@ abstract class Layer {
 	}
 
 	public abstract boolean isLayerGroup();
+
+	public int getBlendMode() {
+		return blend_mode;
+	}
 }

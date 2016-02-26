@@ -27,4 +27,6 @@ public class RasterLayer extends Layer {
 		return false;
 	}
 
+	
+
 }

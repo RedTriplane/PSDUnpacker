@@ -30,4 +30,6 @@ public interface PSDLayer {
 
 	void dropRaster();
 
+	PSD_BLEND_MODE getMode();
+
 }

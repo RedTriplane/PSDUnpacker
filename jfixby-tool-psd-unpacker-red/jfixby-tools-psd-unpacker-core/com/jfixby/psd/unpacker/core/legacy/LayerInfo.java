@@ -11,11 +11,10 @@ public class LayerInfo {
 
 	@Override
 	public String toString() {
-		return "LayerInfo [name=" + name + ", x=" + x + ", y=" + y + ", w=" + w + ", h=" + h + ", visible=" + visible + ", index=" + index + ", channels=" + channels + ", layerTransparency=" + layerTransparency + ", mask_data=" + mask_data
-			+ ", blending_ranges_data=" + blending_ranges_data + "]";
+		return "LayerInfo [name=" + name + ", x=" + x + ", y=" + y + ", w=" + w + ", h=" + h + ", visible=" + visible
+				+ ", index=" + index + ", channels=" + channels + ", layerTransparency=" + layerTransparency
+				+ ", mask_data=" + mask_data + ", blending_ranges_data=" + blending_ranges_data + "]";
 	}
-
-
 
 	final Channels channels = new Channels();
 
@@ -84,6 +83,7 @@ public class LayerInfo {
 	private String name;
 	private MaskData mask_data;
 	private BlendingRanges blending_ranges_data;
+	private int blend_mode;
 
 	public void setMaskData(MaskData mask_data) {
 		this.mask_data = mask_data;
@@ -99,5 +99,17 @@ public class LayerInfo {
 
 	public BlendingRanges getBlendingRanges() {
 		return blending_ranges_data;
+	}
+
+	public static final long BLEND_NORMAL = 1852797549;
+	public static final long BLEND_MULTIPLY = 1836411936;
+	public static final long BLEND_HUE = 1752524064;
+
+	public int getBlendMode() {
+		return blend_mode;
+	}
+
+	public void setBlendMode(int blend_mode) {
+		this.blend_mode = blend_mode;
 	}
 }
