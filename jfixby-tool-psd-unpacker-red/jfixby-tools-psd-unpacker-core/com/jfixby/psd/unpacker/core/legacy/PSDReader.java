@@ -896,7 +896,7 @@ public class PSDReader {
 
 	protected String readString(int len) {
 		// read string of specified length
-		StringBuffer sb = new StringBuffer(len);
+		StringBuilder  sb = new StringBuilder (len);
 		for (int i = 0; i < len; i++) {
 
 			byte[] bytes = new byte[] { (byte) readByte() };
@@ -913,7 +913,7 @@ public class PSDReader {
 		}
 	}
 
-	static void decodeCp1251(byte[] data, StringBuffer sb) {
+	static void decodeCp1251(byte[] data, StringBuilder  sb) {
 		if (data == null) {
 			throw new IllegalArgumentException("Null argument");
 		}

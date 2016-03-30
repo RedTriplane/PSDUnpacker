@@ -6,7 +6,7 @@ public class WinDecoder {
 		if (data == null) {
 			throw new IllegalArgumentException("Null argument");
 		}
-		StringBuffer sb = new StringBuffer(data.length);
+		StringBuilder  sb = new StringBuilder (data.length);
 		for (int i = 0; i < data.length; i++) {
 			sb.append(cp1251Map[data[i] & 0xFF]);
 		}
