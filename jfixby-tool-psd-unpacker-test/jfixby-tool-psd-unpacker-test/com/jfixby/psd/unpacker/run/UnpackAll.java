@@ -1,3 +1,4 @@
+
 package com.jfixby.psd.unpacker.run;
 
 import java.awt.image.BufferedImage;
@@ -26,12 +27,12 @@ public class UnpackAll {
 	private static final FileFilter filter = new FileFilter() {
 
 		@Override
-		public boolean fits(File child) {
+		public boolean fits (File child) {
 			return child.getName().toLowerCase().endsWith(".psd");
 		}
 	};
 
-	public static void main(String[] args) throws IOException {
+	public static void main (String[] args) throws IOException {
 
 		DesktopAssembler.setup();
 		File home = LocalFileSystem.ApplicationHome();
@@ -47,7 +48,7 @@ public class UnpackAll {
 		}
 
 		ChildrenList input_files = input_folder.listChildren();
-		input_files = input_files.filter(filter);
+		input_files = input_files.filterFiles(filter);
 
 		File output_folder = home.child("unpacker-output");
 		output_folder.makeFolder();
@@ -59,8 +60,7 @@ public class UnpackAll {
 
 	}
 
-	private static void unpack(File psd_file_i, File output_folder)
-			throws IOException {
+	private static void unpack (File psd_file_i, File output_folder) throws IOException {
 
 		PSDUnpackingParameters specs = PSDUnpacker.newUnpackingSpecs();
 		specs.setPSDFile(psd_file_i);
@@ -79,16 +79,14 @@ public class UnpackAll {
 		}
 	}
 
-	private static void process_folder(String psd_name, PSDLayer root,
-			File output_path) throws IOException {
+	private static void process_folder (String psd_name, PSDLayer root, File output_path) throws IOException {
 		for (int i = 0; i < root.numberOfChildren(); i++) {
 			PSDLayer child = root.getChild(i);
 			process_child(psd_name, child, output_path);
 		}
 	}
 
-	private static void process_child(String psd_name, PSDLayer child,
-			File output_path) throws IOException {
+	private static void process_child (String psd_name, PSDLayer child, File output_path) throws IOException {
 		if (child.isVisible()) {
 			if (child.isFolder()) {
 				process_folder(psd_name, child, output_path);
@@ -96,8 +94,7 @@ public class UnpackAll {
 				PSDRaster raster = child.getRaster();
 				BufferedImage java_image = raster.getBufferedImage();
 				String raster_name = child.getName();
-				File output_file = output_path.child(psd_name + "."
-						+ raster_name + ".png");
+				File output_file = output_path.child(psd_name + "." + raster_name + ".png");
 
 				L.d("writing", output_file);
 				FileOutputStream os = output_file.newOutputStream();
