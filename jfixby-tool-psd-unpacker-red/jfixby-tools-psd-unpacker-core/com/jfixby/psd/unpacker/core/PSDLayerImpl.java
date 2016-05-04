@@ -1,3 +1,4 @@
+
 package com.jfixby.psd.unpacker.core;
 
 import java.awt.image.BufferedImage;
@@ -26,49 +27,49 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 	private final AbsolutePath<PSDFileContent> my_path;
 
 	private final PSDRaster raster;
-	private PSDFileContentImpl master;
+	private final PSDFileContentImpl master;
 	private PSD_BLEND_MODE blend_mode = PSD_BLEND_MODE.UNKNOWN;
 
-	public PSDLayerImpl(PSDFileContentImpl master, Layer element, AbsolutePath<PSDFileContent> root_path) {
+	public PSDLayerImpl (final PSDFileContentImpl master, final Layer element, final AbsolutePath<PSDFileContent> root_path) {
 		this.master = master;
-		visible = element.isVisible();
-		name = element.getName();
-		blend_mode = modeOf(element.getBlendMode());
+		this.visible = element.isVisible();
+		this.name = element.getName();
+		this.blend_mode = modeOf(element.getBlendMode());
 
-		my_path = root_path;
+		this.my_path = root_path;
 		if (element.isLayerGroup()) {
 			master.reportGroup(this);
-			children_list = Collections.newList();
-			children_map = Collections.newMap();
-			LayerGroup group = (LayerGroup) element;
+			this.children_list = Collections.newList();
+			this.children_map = Collections.newMap();
+			final LayerGroup group = (LayerGroup)element;
 			for (int i = 0; i < group.getSublayers().size(); i++) {
-				Layer child = group.getSublayers().get(i);
+				final Layer child = group.getSublayers().get(i);
 
-				PSDLayerImpl layer = new PSDLayerImpl(master, child, my_path.child(child.getName()));
+				final PSDLayerImpl layer = new PSDLayerImpl(master, child, this.my_path.child(child.getName()));
 
 				// path_string
 				// + PSDPathImpl.SEPARATOR + child.getName());
-				children_list.add(layer);
-				children_map.put(layer.getName(), layer);
+				this.children_list.add(layer);
+				this.children_map.put(layer.getName(), layer);
 			}
 
-			raster = null;
+			this.raster = null;
 		} else {
 			master.reportRaster(this);
-			RasterLayer raster = (RasterLayer) element;
+			final RasterLayer raster = (RasterLayer)element;
 
-			BufferedImage buffered_image = raster.getRaster();
+			final BufferedImage buffered_image = raster.getRaster();
 
 			this.raster = new PSDRasterImpl(buffered_image, raster.getOffset().getX(), raster.getOffset().getY());
 
-			children_list = null;
-			children_map = null;
+			this.children_list = null;
+			this.children_map = null;
 		}
 
 	}
 
-	public static final PSD_BLEND_MODE modeOf(int blend) {
-		 
+	public static final PSD_BLEND_MODE modeOf (final int blend) {
+
 		if (blend == LayerInfo.BLEND_NORMAL) {
 			return PSD_BLEND_MODE.NORMAL;
 		}
@@ -82,34 +83,34 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 	}
 
 	@Override
-	public boolean isVisible() {
-		return visible;
+	public boolean isVisible () {
+		return this.visible;
 	}
 
 	@Override
-	public boolean isFolder() {
-		return children_list != null;
+	public boolean isFolder () {
+		return this.children_list != null;
 	}
 
 	@Override
-	public boolean isRaster() {
-		return !isFolder();
+	public boolean isRaster () {
+		return !this.isFolder();
 	}
 
 	@Override
-	public String getName() {
-		return name;
+	public String getName () {
+		return this.name;
 	}
 
 	@Override
-	public PSDLayer findChildByNamePrefix(String child_name) {
+	public PSDLayer findChildByNamePrefix (final String child_name) {
 		if (this.isFolder()) {
-			PSDLayer value = this.children_map.get(child_name);
+			final PSDLayer value = this.children_map.get(child_name);
 			if (value != null) {
 				return value;
 			} else {
 				for (int i = 0; i < this.children_list.size(); i++) {
-					PSDLayer child = children_list.getElementAt(i);
+					final PSDLayer child = this.children_list.getElementAt(i);
 					if (child.getName().startsWith(child_name)) {
 						return child;
 					}
@@ -122,14 +123,14 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 	}
 
 	@Override
-	public PSDLayer findChildByName(String child_name) {
+	public PSDLayer findChildByName (final String child_name) {
 		if (this.isFolder()) {
-			PSDLayer value = this.children_map.get(child_name);
+			final PSDLayer value = this.children_map.get(child_name);
 			if (value != null) {
 				return value;
 			} else {
 				for (int i = 0; i < this.children_list.size(); i++) {
-					PSDLayer child = children_list.getElementAt(i);
+					final PSDLayer child = this.children_list.getElementAt(i);
 					if (child.getName().equals(child_name)) {
 						return child;
 					}
@@ -142,43 +143,48 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 	}
 
 	@Override
-	public int numberOfChildren() {
+	public int numberOfChildren () {
 		return this.children_list.size();
 	}
 
 	@Override
-	public PSDLayer getChild(int i) {
+	public PSDLayer getChild (final int i) {
 		return this.children_list.getElementAt(i);
 	}
 
 	@Override
-	public AbsolutePath<PSDFileContent> getPath() {
-		return my_path;
+	public AbsolutePath<PSDFileContent> getPath () {
+		return this.my_path;
 	}
 
 	@Override
-	public void printChildren() {
+	public void printChildren () {
 		L.d(this.getPath().toString(), this.children_map);
 	}
 
+// @Override
+// public String toString() {
+// return "PSDLayer[visible=" + visible + ", name=" + name + ", my_path=" + my_path + "]";
+// }
+
 	@Override
-	public String toString() {
-		return "PSDLayer[visible=" + visible + ", name=" + name + ", my_path=" + my_path + "]";
+	public PSDRaster getRaster () {
+		return this.raster;
 	}
 
 	@Override
-	public PSDRaster getRaster() {
-		return raster;
+	public String toString () {
+		return "PSDLayer(" + this.name + ") @=" + this.my_path + " visible=" + this.visible + "";
 	}
 
 	@Override
-	public void dropRaster() {
+	public void dropRaster () {
 		this.raster.drop();
 	}
 
 	@Override
-	public PSD_BLEND_MODE getMode() {
-		return blend_mode;
+	public PSD_BLEND_MODE getMode () {
+		return this.blend_mode;
 	}
 
 }

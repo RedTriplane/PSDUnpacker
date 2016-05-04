@@ -20,7 +20,7 @@ import com.jfixby.psd.unpacker.api.PSDRaster;
 import com.jfixby.psd.unpacker.api.PSDRootLayer;
 import com.jfixby.psd.unpacker.api.PSDUnpacker;
 import com.jfixby.psd.unpacker.api.PSDUnpackingParameters;
-import com.jfixby.red.desktop.DesktopAssembler;
+import com.jfixby.red.desktop.DesktopSetup;
 
 public class UnpackAll {
 
@@ -34,7 +34,7 @@ public class UnpackAll {
 
 	public static void main (String[] args) throws IOException {
 
-		DesktopAssembler.setup();
+		DesktopSetup.deploy();
 		File home = LocalFileSystem.ApplicationHome();
 
 		File input_folder = home.child("unpacker-input");
