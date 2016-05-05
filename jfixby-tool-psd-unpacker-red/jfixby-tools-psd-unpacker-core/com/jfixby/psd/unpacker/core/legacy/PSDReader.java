@@ -523,7 +523,7 @@ public class PSDReader {
 				L.e("PSD_BLEND_MODE.UNKNOWN", blend_mode);
 			}
 
-			info.layerTransparency = this.readByte();
+			info.setLayerTransparency(this.readByte());
 			final int clipping = this.readByte();
 			final int flags = this.readByte();
 			final String binary = Integer.toBinaryString(0xf0 | flags);
@@ -728,7 +728,7 @@ public class PSDReader {
 				raster_layer.getOffset().setX(offset_x);
 				raster_layer.getOffset().setY(offset_y);
 				raster_layer.setRaster(im);
-				final float opacity = info.layerTransparency / 255f;
+				final float opacity = info.getLayerTransparency() / 255f;
 				raster_layer.setOpacity(opacity);
 				raster_layer.setVisible(info.isVisible());
 
@@ -765,6 +765,8 @@ public class PSDReader {
 					final LayerGroup current = layer_group_stack.remove(0);
 					current.setName(layer_name);
 					current.setVisible(info.isVisible());
+					final float opacity = info.getLayerTransparency() / 255f;
+					current.setOpacity(opacity);
 
 					// L.d(prefix(prefix) + "closing group",
 					// current.getName());
