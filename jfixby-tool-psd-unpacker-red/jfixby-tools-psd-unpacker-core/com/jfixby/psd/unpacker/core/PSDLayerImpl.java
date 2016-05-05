@@ -29,11 +29,18 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 	private final PSDRaster raster;
 	private final PSDFileContentImpl master;
 	private PSD_BLEND_MODE blend_mode = PSD_BLEND_MODE.UNKNOWN;
+	private final double opacity;
+
+	@Override
+	public double getOpacity () {
+		return this.opacity;
+	}
 
 	public PSDLayerImpl (final PSDFileContentImpl master, final Layer element, final AbsolutePath<PSDFileContent> root_path) {
 		this.master = master;
 		this.visible = element.isVisible();
 		this.name = element.getName();
+		this.opacity = element.getOpacity();
 		this.blend_mode = modeOf(element.getBlendMode());
 
 		this.my_path = root_path;

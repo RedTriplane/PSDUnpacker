@@ -1,35 +1,38 @@
+
 package com.jfixby.psd.unpacker.api;
 
 import com.jfixby.cmns.api.util.path.AbsolutePath;
 
 public interface PSDLayer {
 
-	boolean isVisible();
+	boolean isVisible ();
 
-	boolean isFolder();
+	boolean isFolder ();
 
-	String getName();
+	String getName ();
 
-	PSDLayer findChildByNamePrefix(String child_name);
+	PSDLayer findChildByNamePrefix (String child_name);
 
-	PSDLayer findChildByName(String child_name);
+	PSDLayer findChildByName (String child_name);
 
-	int numberOfChildren();
+	int numberOfChildren ();
 
-	PSDLayer getChild(int i);
+	PSDLayer getChild (int i);
 
 	// PSDPath getPath();
 
-	void printChildren();
+	void printChildren ();
 
-	boolean isRaster();
+	boolean isRaster ();
 
-	PSDRaster getRaster();
+	PSDRaster getRaster ();
 
-	AbsolutePath<PSDFileContent> getPath();
+	AbsolutePath<PSDFileContent> getPath ();
 
-	void dropRaster();
+	void dropRaster ();
 
-	PSD_BLEND_MODE getMode();
+	PSD_BLEND_MODE getMode ();
+
+	double getOpacity ();
 
 }

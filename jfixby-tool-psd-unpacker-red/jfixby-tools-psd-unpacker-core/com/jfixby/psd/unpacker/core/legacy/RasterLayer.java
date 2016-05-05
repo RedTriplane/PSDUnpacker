@@ -1,3 +1,4 @@
+
 package com.jfixby.psd.unpacker.core.legacy;
 
 import java.awt.image.BufferedImage;
@@ -9,24 +10,22 @@ public class RasterLayer extends Layer {
 	final Float2 offset = Geometry.newFloat2();
 	BufferedImage raster;
 
-	public BufferedImage getRaster() {
-		return raster;
+	public BufferedImage getRaster () {
+		return this.raster;
 	}
 
-	public void setRaster(BufferedImage raster) {
+	public void setRaster (final BufferedImage raster) {
 		this.raster = raster;
 	}
 
-	public Float2 getOffset() {
-		return offset;
+	public Float2 getOffset () {
+		return this.offset;
 	}
 
 	@Override
-	public boolean isLayerGroup() {
+	public boolean isLayerGroup () {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
 
 }
