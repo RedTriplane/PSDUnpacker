@@ -721,7 +721,7 @@ public class PSDReader {
 				final RasterLayer raster_layer = new RasterLayer();
 
 				final String name = info.getName();
-
+				L.d("layer", name);
 				raster_layer.setName(name);
 				final double offset_x = info.getX();
 				final double offset_y = info.getY();
