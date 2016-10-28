@@ -47,7 +47,7 @@ public class UnpackAll {
 			Sys.exit();
 		}
 
-		ChildrenList input_files = input_folder.listChildren();
+		ChildrenList input_files = input_folder.listDirectChildren();
 		input_files = input_files.filterFiles(filter);
 
 		File output_folder = home.child("unpacker-output");
