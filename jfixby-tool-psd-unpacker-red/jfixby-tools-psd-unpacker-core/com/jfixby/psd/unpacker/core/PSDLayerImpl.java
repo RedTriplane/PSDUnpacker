@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
 import com.jfixby.cmns.api.collections.Map;
+import com.jfixby.cmns.api.err.Err;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.util.path.AbsolutePath;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
@@ -151,6 +152,9 @@ public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 
 	@Override
 	public int numberOfChildren () {
+		if (this.children_list == null) {
+			Err.reportError("null children " + this);
+		}
 		return this.children_list.size();
 	}
 
