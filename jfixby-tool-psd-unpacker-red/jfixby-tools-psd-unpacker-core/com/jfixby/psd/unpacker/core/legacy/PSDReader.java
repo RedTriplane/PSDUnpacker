@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Vector;
 
+import com.jfixby.cmns.api.err.Err;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.psd.unpacker.api.PSD_BLEND_MODE;
@@ -314,7 +315,7 @@ public class PSDReader {
 			return;
 		}
 
-		final Vector<LayerInfo> layers = new Vector<LayerInfo>();
+		final Vector<LayerInfo> layers = new Vector<>();
 		this.readLayerInfo(layers);
 
 		// JUtils.newList(layers).print("found");
@@ -596,7 +597,7 @@ public class PSDReader {
 		}
 		final String msg = "PSD-file contains mask! " + info;
 		if (this.crash_on_mask) {
-			throw new Error(msg);
+			Err.reportError(msg);
 		} else {
 			L.e(msg);
 		}
@@ -651,7 +652,7 @@ public class PSDReader {
 		// frameCount = this.layers.size();
 		this.content = new FileContent();
 
-		final Vector<LayerGroup> layer_group_stack = new Vector<LayerGroup>();
+		final Vector<LayerGroup> layer_group_stack = new Vector<>();
 		final LayerGroup root_layer_group = this.content.layers_structure.getRoot();
 		layer_group_stack.add(root_layer_group);
 
@@ -689,7 +690,7 @@ public class PSDReader {
 				default:
 					L.d("processing", info);
 					L.d("       ", channel_info);
-					throw new Error();
+					Err.reportNotImplementedYet();
 				}
 				if (this.err()) {
 
@@ -783,7 +784,7 @@ public class PSDReader {
 		}
 
 		if (layer_group_stack.get(0) != root_layer_group) {
-			throw new Error("Stack Corrupted! " + layer_group_stack);
+			Err.reportError("Stack Corrupted! " + layer_group_stack);
 
 		}
 

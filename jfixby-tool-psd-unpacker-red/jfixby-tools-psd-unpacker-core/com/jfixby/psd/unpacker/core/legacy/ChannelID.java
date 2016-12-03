@@ -1,10 +1,13 @@
+
 package com.jfixby.psd.unpacker.core.legacy;
+
+import com.jfixby.cmns.api.err.Err;
 
 public enum ChannelID {
 	RED, GREEN, BLUE, ALPHA, ERR, USER_MASK, USER_LAYER_MASK;
 	;
 
-	public static ChannelID valueOfInt(int id) {
+	public static ChannelID valueOfInt (final int id) {
 		if (id == 0) {
 			return RED;
 		}
@@ -26,12 +29,13 @@ public enum ChannelID {
 		if (id == 3) {
 			return ALPHA;
 		}
-		throw new Error("ChannelID:" + id);
+		Err.reportError("ChannelID:" + id);
+		return null;
 
-//		return ERR;
+// return ERR;
 	}
 
-	public boolean isOK() {
+	public boolean isOK () {
 		if (this == RED) {
 			return true;
 		}
