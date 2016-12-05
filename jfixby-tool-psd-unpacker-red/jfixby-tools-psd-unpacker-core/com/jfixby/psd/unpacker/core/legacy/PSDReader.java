@@ -690,7 +690,7 @@ public class PSDReader {
 				default:
 					L.d("processing", info);
 					L.d("       ", channel_info);
-					Err.reportNotImplementedYet();
+					Err.throwNotImplementedYet();
 				}
 				if (this.err()) {
 
