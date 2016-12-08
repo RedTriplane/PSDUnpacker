@@ -6,6 +6,7 @@ import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
+import com.jfixby.cmns.api.desktop.DesktopSetup;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.FileOutputStream;
 import com.jfixby.cmns.api.file.LocalFileSystem;
@@ -16,7 +17,6 @@ import com.jfixby.psd.unpacker.api.PSDRaster;
 import com.jfixby.psd.unpacker.api.PSDRootLayer;
 import com.jfixby.psd.unpacker.api.PSDUnpacker;
 import com.jfixby.psd.unpacker.api.PSDUnpackingParameters;
-import com.jfixby.red.desktop.DesktopSetup;
 
 public class UnpackExamplePSD {
 
