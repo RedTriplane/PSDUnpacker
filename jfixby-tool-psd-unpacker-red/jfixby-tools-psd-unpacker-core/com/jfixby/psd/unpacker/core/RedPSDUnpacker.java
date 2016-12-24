@@ -3,12 +3,12 @@ package com.jfixby.psd.unpacker.core;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-import com.jfixby.cmns.api.file.File;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDUnpackerComponent;
 import com.jfixby.psd.unpacker.api.PSDUnpackingParameters;
 import com.jfixby.psd.unpacker.core.legacy.PSDReader;
+import com.jfixby.scarabei.api.file.File;
+import com.jfixby.scarabei.api.log.L;
 
 public class RedPSDUnpacker implements PSDUnpackerComponent {
 

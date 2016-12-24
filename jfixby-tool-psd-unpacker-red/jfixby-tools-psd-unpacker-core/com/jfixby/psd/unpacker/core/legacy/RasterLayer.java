@@ -3,8 +3,8 @@ package com.jfixby.psd.unpacker.core.legacy;
 
 import java.awt.image.BufferedImage;
 
-import com.jfixby.cmns.api.floatn.Float2;
-import com.jfixby.cmns.api.geometry.Geometry;
+import com.jfixby.scarabei.api.floatn.Float2;
+import com.jfixby.scarabei.api.geometry.Geometry;
 
 public class RasterLayer extends Layer {
 	final Float2 offset = Geometry.newFloat2();

@@ -1,7 +1,7 @@
 package com.jfixby.psd.unpacker.core;
 
-import com.jfixby.cmns.api.file.File;
 import com.jfixby.psd.unpacker.api.PSDUnpackingParameters;
+import com.jfixby.scarabei.api.file.File;
 
 public class PSDUnpackingParametersImpl implements PSDUnpackingParameters {
 	private File PSDFilePath;

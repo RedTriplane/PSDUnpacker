@@ -1,6 +1,6 @@
 package com.jfixby.psd.unpacker.api;
 
-import com.jfixby.cmns.api.file.File;
+import com.jfixby.scarabei.api.file.File;
 
 public interface PSDUnpackingParameters {
 

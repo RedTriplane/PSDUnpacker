@@ -6,17 +6,17 @@ import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
-import com.jfixby.cmns.api.desktop.DesktopSetup;
-import com.jfixby.cmns.api.file.File;
-import com.jfixby.cmns.api.file.FileOutputStream;
-import com.jfixby.cmns.api.file.LocalFileSystem;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDLayer;
 import com.jfixby.psd.unpacker.api.PSDRaster;
 import com.jfixby.psd.unpacker.api.PSDRootLayer;
 import com.jfixby.psd.unpacker.api.PSDUnpacker;
 import com.jfixby.psd.unpacker.api.PSDUnpackingParameters;
+import com.jfixby.scarabei.api.desktop.DesktopSetup;
+import com.jfixby.scarabei.api.file.File;
+import com.jfixby.scarabei.api.file.FileOutputStream;
+import com.jfixby.scarabei.api.file.LocalFileSystem;
+import com.jfixby.scarabei.api.log.L;
 
 public class UnpackExamplePSD {
 

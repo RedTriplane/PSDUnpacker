@@ -1,7 +1,7 @@
 package com.jfixby.psd.unpacker.api;
 
-import com.jfixby.cmns.api.collections.Collection;
-import com.jfixby.cmns.api.util.path.MountPoint;
+import com.jfixby.scarabei.api.collections.Collection;
+import com.jfixby.scarabei.api.util.path.MountPoint;
 
 public interface PSDFileContent extends MountPoint {
 

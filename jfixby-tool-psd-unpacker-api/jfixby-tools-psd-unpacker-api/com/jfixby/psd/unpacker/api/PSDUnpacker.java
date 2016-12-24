@@ -2,7 +2,7 @@ package com.jfixby.psd.unpacker.api;
 
 import java.io.IOException;
 
-import com.jfixby.cmns.api.ComponentInstaller;
+import com.jfixby.scarabei.api.ComponentInstaller;
 
 public class PSDUnpacker {
 

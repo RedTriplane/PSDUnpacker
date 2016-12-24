@@ -1,7 +1,7 @@
 
 package com.jfixby.psd.unpacker.core.legacy;
 
-import com.jfixby.cmns.api.err.Err;
+import com.jfixby.scarabei.api.err.Err;
 
 public enum ChannelID {
 	RED, GREEN, BLUE, ALPHA, ERR, USER_MASK, USER_LAYER_MASK;

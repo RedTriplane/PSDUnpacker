@@ -12,11 +12,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Vector;
 
-import com.jfixby.cmns.api.err.Err;
-import com.jfixby.cmns.api.log.L;
-import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.psd.unpacker.api.PSD_BLEND_MODE;
 import com.jfixby.psd.unpacker.core.PSDLayerImpl;
+import com.jfixby.scarabei.api.err.Err;
+import com.jfixby.scarabei.api.log.L;
+import com.jfixby.scarabei.api.sys.Sys;
 
 /**
  * Class PSDReader - Decodes a PhotoShop (.psd) file into one or more frames.

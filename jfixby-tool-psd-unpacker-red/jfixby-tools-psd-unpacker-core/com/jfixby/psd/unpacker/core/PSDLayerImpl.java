@@ -3,12 +3,6 @@ package com.jfixby.psd.unpacker.core;
 
 import java.awt.image.BufferedImage;
 
-import com.jfixby.cmns.api.collections.Collections;
-import com.jfixby.cmns.api.collections.List;
-import com.jfixby.cmns.api.collections.Map;
-import com.jfixby.cmns.api.err.Err;
-import com.jfixby.cmns.api.log.L;
-import com.jfixby.cmns.api.util.path.AbsolutePath;
 import com.jfixby.psd.unpacker.api.PSDFileContent;
 import com.jfixby.psd.unpacker.api.PSDLayer;
 import com.jfixby.psd.unpacker.api.PSDRaster;
@@ -18,6 +12,12 @@ import com.jfixby.psd.unpacker.core.legacy.Layer;
 import com.jfixby.psd.unpacker.core.legacy.LayerGroup;
 import com.jfixby.psd.unpacker.core.legacy.LayerInfo;
 import com.jfixby.psd.unpacker.core.legacy.RasterLayer;
+import com.jfixby.scarabei.api.collections.Collections;
+import com.jfixby.scarabei.api.collections.List;
+import com.jfixby.scarabei.api.collections.Map;
+import com.jfixby.scarabei.api.err.Err;
+import com.jfixby.scarabei.api.log.L;
+import com.jfixby.scarabei.api.util.path.AbsolutePath;
 
 public class PSDLayerImpl implements PSDLayer, PSDRootLayer {
 
