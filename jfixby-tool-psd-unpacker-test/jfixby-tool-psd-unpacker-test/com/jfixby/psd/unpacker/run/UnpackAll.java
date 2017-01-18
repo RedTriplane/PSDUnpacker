@@ -14,7 +14,7 @@ import com.jfixby.psd.unpacker.api.PSDRootLayer;
 import com.jfixby.psd.unpacker.api.PSDUnpacker;
 import com.jfixby.psd.unpacker.api.PSDUnpackingParameters;
 import com.jfixby.scarabei.api.desktop.DesktopSetup;
-import com.jfixby.scarabei.api.file.ChildrenList;
+import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.FileFilter;
 import com.jfixby.scarabei.api.file.FileOutputStream;
@@ -47,8 +47,8 @@ public class UnpackAll {
 			Sys.exit();
 		}
 
-		ChildrenList input_files = input_folder.listDirectChildren();
-		input_files = input_files.filterFiles(filter);
+		FilesList input_files = input_folder.listDirectChildren();
+		input_files = input_files.filter(filter);
 
 		File output_folder = home.child("unpacker-output");
 		output_folder.makeFolder();
