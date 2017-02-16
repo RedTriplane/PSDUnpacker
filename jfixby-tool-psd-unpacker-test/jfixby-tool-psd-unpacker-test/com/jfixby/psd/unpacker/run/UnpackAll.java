@@ -13,7 +13,7 @@ import com.jfixby.psd.unpacker.api.PSDRaster;
 import com.jfixby.psd.unpacker.api.PSDRootLayer;
 import com.jfixby.psd.unpacker.api.PSDUnpacker;
 import com.jfixby.psd.unpacker.api.PSDUnpackingParameters;
-import com.jfixby.scarabei.api.desktop.DesktopSetup;
+import com.jfixby.scarabei.api.desktop.ScarabeiDesktop;
 import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.FileFilter;
@@ -34,7 +34,7 @@ public class UnpackAll {
 
 	public static void main (String[] args) throws IOException {
 
-		DesktopSetup.deploy();
+		ScarabeiDesktop.deploy();
 		File home = LocalFileSystem.ApplicationHome();
 
 		File input_folder = home.child("unpacker-input");
