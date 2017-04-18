@@ -1,17 +1,18 @@
+
 package com.jfixby.psd.unpacker.core.legacy;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class LayerGroup extends Layer {
 
-	final Vector<Layer> sublayers = new Vector<Layer>();
+	final ArrayList<Layer> sublayers = new ArrayList<Layer>();
 
-	public Vector<Layer> getSublayers() {
-		return sublayers;
+	public ArrayList<Layer> getSublayers () {
+		return this.sublayers;
 	}
 
 	@Override
-	public boolean isLayerGroup() {
+	public boolean isLayerGroup () {
 		return true;
 	}
 

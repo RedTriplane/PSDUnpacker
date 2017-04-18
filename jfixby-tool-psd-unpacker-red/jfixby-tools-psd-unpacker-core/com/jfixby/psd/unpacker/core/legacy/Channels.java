@@ -1,26 +1,27 @@
+
 package com.jfixby.psd.unpacker.core.legacy;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Channels {
 
 	@Override
-	public String toString() {
-		return "Channels" + list + "";
+	public String toString () {
+		return "Channels" + this.list + "";
 	}
 
-	final Vector<ChannelInfo> list = new Vector<ChannelInfo>();
+	final ArrayList<ChannelInfo> list = new ArrayList<ChannelInfo>();
 
-	public void add(ChannelInfo channelInfo) {
-		list.add(channelInfo);
+	public void add (final ChannelInfo channelInfo) {
+		this.list.add(channelInfo);
 	}
 
-	public int size() {
-		return list.size();
+	public int size () {
+		return this.list.size();
 	}
 
-	public ChannelInfo get(int j) {
-		return list.get(j);
+	public ChannelInfo get (final int j) {
+		return this.list.get(j);
 	}
 
 }

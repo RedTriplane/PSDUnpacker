@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Vector;
+import java.util.ArrayList;
 
 import com.jfixby.psd.unpacker.api.PSD_BLEND_MODE;
 import com.jfixby.psd.unpacker.core.PSDLayerImpl;
@@ -315,7 +315,7 @@ public class PSDReader {
 			return;
 		}
 
-		final Vector<LayerInfo> layers = new Vector<>();
+		final ArrayList<LayerInfo> layers = new ArrayList<>();
 		this.readLayerInfo(layers);
 
 		// JUtils.newList(layers).print("found");
@@ -448,7 +448,7 @@ public class PSDReader {
 		return (((((this.readByte() << 8) | this.readByte()) << 8) | this.readByte()) << 8) | this.readByte();
 	}
 
-	protected void readLayerInfo (final Vector<LayerInfo> layers) {
+	protected void readLayerInfo (final ArrayList<LayerInfo> layers) {
 		// read layer header info
 		this.layerMaskSectionLen = this.readInt();
 		// Log.d("layerMaskSectionLen", layerMaskSectionLen);
@@ -484,7 +484,7 @@ public class PSDReader {
 		return info.w > 0 && info.h > 0;
 	}
 
-	private void read_layers_info_positive (final int nLayers, final Vector<LayerInfo> layers) {
+	private void read_layers_info_positive (final int nLayers, final ArrayList<LayerInfo> layers) {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < nLayers; i++) {
 			final LayerInfo info = new LayerInfo(i);
@@ -647,12 +647,12 @@ public class PSDReader {
 		}
 	}
 
-	protected void readLayers (final Vector<LayerInfo> layers) {
+	protected void readLayers (final ArrayList<LayerInfo> layers) {
 		// read and convert each layer to BufferedImage
 		// frameCount = this.layers.size();
 		this.content = new FileContent();
 
-		final Vector<LayerGroup> layer_group_stack = new Vector<>();
+		final ArrayList<LayerGroup> layer_group_stack = new ArrayList<>();
 		final LayerGroup root_layer_group = this.content.layers_structure.getRoot();
 		layer_group_stack.add(root_layer_group);
 
@@ -760,7 +760,8 @@ public class PSDReader {
 					current.getSublayers().add(next);
 					// L.d(prefix(prefix) + "current[", current.getName());
 					// L.d(prefix(prefix + 1) + "step down", next.getName());
-					layer_group_stack.insertElementAt(next, 0);
+					layer_group_stack.add(0, next);
+// layer_group_stack.insertElementAt(next, 0);
 				} else {
 					// end group;
 					final LayerGroup current = layer_group_stack.remove(0);
@@ -902,7 +903,7 @@ public class PSDReader {
 		final StringBuilder sb = new StringBuilder(len);
 		for (int i = 0; i < len; i++) {
 
-			final byte[] bytes = new byte[] {(byte)this.readByte()};
+			final byte[] bytes = new byte[]{(byte)this.readByte()};
 			decodeCp1251(bytes, sb);
 
 		}
@@ -927,7 +928,7 @@ public class PSDReader {
 
 	}
 
-	static char[] cp1251Map = new char[] {'\u0000', '\u0001', '\u0002', '\u0003', '\u0004', '\u0005', '\u0006', '\u0007', '\u0008',
+	static char[] cp1251Map = new char[]{'\u0000', '\u0001', '\u0002', '\u0003', '\u0004', '\u0005', '\u0006', '\u0007', '\u0008',
 		'\u0009', '\n', '\u000B', '\u000C', '\r', '\u000E', '\u000F', '\u0010', '\u0011', '\u0012', '\u0013', '\u0014', '\u0015',
 		'\u0016', '\u0017', '\u0018', '\u0019', '\u001A', '\u001B', '\u001C', '\u001D', '\u001E', '\u001F', '\u0020', '\u0021',
 		'\u0022', '\u0023', '\u0024', '\u0025', '\u0026', '\'', '\u0028', '\u0029', '\u002A', '\u002B', '\u002C', '\u002D',
