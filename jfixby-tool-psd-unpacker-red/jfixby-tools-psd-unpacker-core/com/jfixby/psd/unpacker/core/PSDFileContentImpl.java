@@ -12,7 +12,7 @@ import com.jfixby.scarabei.api.collections.Collection;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.List;
 import com.jfixby.scarabei.api.log.L;
-import com.jfixby.scarabei.api.util.JUtils;
+import com.jfixby.scarabei.api.util.Utils;
 import com.jfixby.scarabei.api.util.path.AbsolutePath;
 
 public class PSDFileContentImpl implements PSDFileContent {
@@ -30,7 +30,7 @@ public class PSDFileContentImpl implements PSDFileContent {
 
 	public PSDFileContentImpl(com.jfixby.psd.unpacker.core.legacy.FileContent result) {
 		this.result = result;
-		root_path = JUtils.newAbsolutePath(this);
+		root_path = Utils.newAbsolutePath(this);
 		root = new PSDLayerImpl(this, this.result.getRootLayer(), root_path);
 
 	}
