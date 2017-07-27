@@ -5,7 +5,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red-desktop"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-psd-unpacker-api"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-psd-unpacker-red"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/psd-unpacker-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/psd-unpacker-red"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
