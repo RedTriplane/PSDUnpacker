@@ -6,7 +6,7 @@ sourceCompatibility = 1.8
 
 
 dependencies {
-      compile project(":scarabei-api")
+      //compile project(":scarabei-api")
 }
 
 sourceSets {

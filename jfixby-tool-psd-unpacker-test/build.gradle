@@ -8,9 +8,6 @@ sourceCompatibility = 1.8
 dependencies {
       compile project(":jfixby-tool-psd-unpacker-api")
       compile project(":jfixby-tool-psd-unpacker-red")
-      compile project(":scarabei-api")
-      compile project(":scarabei-red")
-      compile project(":scarabei-red-desktop")
 }
 
 sourceSets {
